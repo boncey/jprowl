@@ -1,4 +1,4 @@
-package org.antbear.prowl;
+package org.antbear.jprowl;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;

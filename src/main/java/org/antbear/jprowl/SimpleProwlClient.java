@@ -1,4 +1,4 @@
-package org.antbear.prowl;
+package org.antbear.jprowl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

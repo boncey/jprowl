@@ -1,4 +1,4 @@
-package org.antbear.prowl;
+package org.antbear.jprowl;
 
 import javax.validation.constraints.NotNull;
 

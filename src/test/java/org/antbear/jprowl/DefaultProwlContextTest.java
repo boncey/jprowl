@@ -1,6 +1,5 @@
-package org.antbear.prowl;
+package org.antbear.jprowl;
 
-import org.antbear.prowl.DefaultProwlContext;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;

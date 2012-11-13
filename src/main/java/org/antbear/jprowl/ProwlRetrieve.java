@@ -1,9 +1,9 @@
-package org.antbear.prowl;
+package org.antbear.jprowl;
 
-import java.net.URL;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import java.net.URL;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public final class ProwlRetrieve {

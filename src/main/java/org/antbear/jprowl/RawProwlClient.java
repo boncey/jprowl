@@ -1,4 +1,4 @@
-package org.antbear.prowl;
+package org.antbear.jprowl;
 
 import com.google.common.collect.ImmutableList;
 import org.apache.http.client.HttpClient;

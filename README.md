@@ -1,4 +1,4 @@
-Prowl is a Java interface for working with [Prowl](http://www.prowlapp.com).
+JProwl is a Java interface for working with [Prowl](http://www.prowlapp.com).
 
 - It can be used with Spring or without
 - XML marshalling is done with JAXB (JSE)

@@ -1,4 +1,4 @@
-package org.antbear.prowl;
+package org.antbear.jprowl;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,9 +6,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import org.antbear.prowl.ProwlResponse;
-import org.antbear.prowl.ProwlRetrieve;
-import org.antbear.prowl.ProwlSuccess;
 import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Before;
