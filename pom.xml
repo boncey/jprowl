@@ -45,11 +45,11 @@
 
     <distributionManagement>
         <repository>
-            <id>bwolf-github-maven-release-repository</id>
+            <id>release-repository</id>
             <url>https://github.com/bwolf/maven-repository/raw/master/releases</url>
         </repository>
         <snapshotRepository>
-            <id>bwolf-github-maven-snapshot-repository</id>
+            <id>snapshot-repository</id>
             <url>https://github.com/bwolf/maven-repository/raw/master/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
