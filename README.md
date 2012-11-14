@@ -60,8 +60,10 @@ public void setProwlClient(@NotNull final SimpleProwlClient prowlClient) {
 ```
 
 ## Without Springframework
+Without spring, the wiring of the dependencies must be done manually. But it's trivial:
 
 ```java
+
 DefaultProwlContext context = new DefaultProwlContext();
 RawProwlClient client = new RawProwlClient();
 client.setContext(context);
@@ -76,6 +78,7 @@ You can either work with the `RawProwlClient` class, or with more comfortable `S
 default error checking. In the case of errors or failures it throws an `ProwlException`.
 
 ```java
+
 SimpleProwlClient simpleClient = new SimpleProwlClient();
 simpleClient.setClient(client);
 
