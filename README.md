@@ -18,7 +18,7 @@ Posting a message to Prowl is a simple:
         notification.setApiKey("your-api-key");
         notification.setPriority(ProwlPriority.NORMAL);
         notification.setApplicationName("name-of-your-application");
-        notification.setSubject("your subject);
+        notification.setSubject("your subject");
         notification.setDescription("your message description, long text");
 
         final ProwlResponse response = prowlClient.postNotification(notification);
@@ -48,7 +48,7 @@ Define a bean of type `org.antbear.jprowl.RawProwlClient` and feed it the define
     <bean class="org.antbear.jprowl.RawProwlClient">
         <property name="context" ref="ProwlContext"/>
     </bean>
-``
+```
 
 In your class, add a setter to consume the now configured `ProwlClient`:
 
@@ -82,4 +82,6 @@ simpleClient.setClient(client);
 
 // setup ProwlNotification object and post
 final ProwlResponse response = simpleClient.postNotification(notification);
-``
+```
+
+EOF
