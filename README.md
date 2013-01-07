@@ -59,18 +59,9 @@ final ProwlClient client = new SimpleProwlClient(new RawProwlClient(context));
 final ProwlResponse response = client.postNotification(notification);
 ```
 
-The default prowl context loads its service URL from a properties file in the classpath (provided).
+The default prowl context uses the default URL, which can be overriden via constructor arg or setter.
 
 You can either work with the `RawProwlClient` class, or with more comfortable `SimpleProwlClient` class which provides
 default error checking. In the case of errors or failures it throws an `ProwlException`.
-
-```java
-
-SimpleProwlClient simpleClient = new SimpleProwlClient();
-simpleClient.setClient(client);
-
-// setup ProwlNotification object and post
-final ProwlResponse response = simpleClient.postNotification(notification);
-```
 
 EOF
