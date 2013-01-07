@@ -1,22 +1,25 @@
 package org.antbear.jprowl;
 
-import java.io.IOException;
-import java.util.Properties;
+import javax.validation.constraints.NotNull;
 
 public final class DefaultProwlContext extends AbstractProwlContext {
 
+    private String serviceURL;
+
+    public DefaultProwlContext() {
+        this("https://api.prowlapp.com/publicapi/");
+    }
+
+    public DefaultProwlContext(@NotNull final String serviceURL) {
+        this.serviceURL = serviceURL;
+    }
+
+    public void setServiceURL(@NotNull final String serviceURL) {
+        this.serviceURL = serviceURL;
+    }
+
     @Override
     public String getServiceURL() {
-        final Properties properties = new Properties();
-        try {
-            properties.load(getClass().getResourceAsStream(getClass().getSimpleName() + ".properties"));
-        } catch (IOException e) {
-            throw new RuntimeException("Failed loading class resource", e);
-        }
-        final String url = properties.getProperty("prowl.url");
-        if (null == url) {
-            throw new RuntimeException("Failed loading properties or misconfigured properties file");
-        }
-        return url;
+        return this.serviceURL;
     }
 }

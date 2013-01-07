@@ -1,5 +1,7 @@
 package org.antbear.jprowl;
 
+import org.antbear.jprowl.model.ProwlResponse;
+
 import javax.validation.constraints.NotNull;
 
 public interface ProwlClient {

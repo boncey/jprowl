@@ -3,6 +3,7 @@ package org.antbear.jprowl;
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import org.antbear.jprowl.model.ProwlPriority;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;

@@ -1,5 +1,6 @@
 package org.antbear.jprowl;
 
+import org.antbear.jprowl.model.ProwlResponse;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;

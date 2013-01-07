@@ -1,18 +1,19 @@
-package org.antbear.jprowl;
-
-import java.io.IOException;
-import java.io.InputStream;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
+package org.antbear.jprowl.model;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import static java.lang.System.out;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+
+import static java.lang.System.out;
+import static org.junit.Assert.*;
 
 public class ProwlResponseTest {
 

@@ -1,6 +1,7 @@
 package org.antbear.jprowl;
 
 import com.google.common.collect.ImmutableList;
+import org.antbear.jprowl.model.ProwlResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
@@ -17,6 +18,13 @@ public class RawProwlClient implements ProwlClient {
 
     @NotNull
     private ProwlContext context;
+
+    public RawProwlClient() {
+    }
+
+    public RawProwlClient(@NotNull final ProwlContext prowlContext) {
+        this.context = context;
+    }
 
     @NotNull
     public ProwlContext getContext() {

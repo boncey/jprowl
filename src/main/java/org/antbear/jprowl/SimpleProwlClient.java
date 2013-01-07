@@ -1,18 +1,20 @@
 package org.antbear.jprowl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.antbear.jprowl.model.ProwlResponse;
+import org.antbear.jprowl.model.ProwlSuccess;
 
 import javax.validation.constraints.NotNull;
 
-@Component
 public class SimpleProwlClient implements ProwlClient {
 
-    private RawProwlClient client;
+    private final ProwlClient client;
 
-    @Autowired
-    public void setClient(@NotNull final RawProwlClient client) {
-        this.client = client;
+    public SimpleProwlClient() {
+        this.client = new RawProwlClient();
+    }
+
+    public SimpleProwlClient(final ProwlClient prowlClient) {
+        this.client = prowlClient;
     }
 
     @Override

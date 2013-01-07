@@ -7,6 +7,9 @@ JProwl is a Java interface for working with [Prowl](http://www.prowlapp.com).
 
 # Usage
 
+## Requirements
+jprowl uses slf4j without specifying a logging backend. You need to choose a backend like {logback, log4j}.
+
 ## General
 Depending on the inteded use, either via spring or not, the JProwl package needs to be configured (see below).
 
@@ -29,30 +32,16 @@ The variable `prowlClient` is of type `org.antbear.jprowl.SimpleProwlClient`. It
 In your spring context configuration, add:
 
 ```xml
-<context:component-scan base-package="org.antbear.jprowl,com.yourcompoany.yourpackage"/>
-<context:annotation-config/>
+<bean id="prowlContext" class="org.antbear.jprowl.DefaultProwlContext"/>
+<bean id="rawProwlClient" class="org.antbear.jprowl.RawProwlClient"
+    p:context-ref="prowlContext"/>
+<bean id="prowlClient" class="org.antbear.jprowl.SimpleProwlClient"
+    p:client-ref="rawProwlClient"/>
 ```
 
-Define a bean of type `org.antbear.jprowl.SpringProwlContext` and feed it with the API URL of Prowl:
-
-```xml
-<bean id="ProwlContext" class="org.antbear.jprowl.SpringProwlContext">
-	<property name="serviceURL" value="https://api.prowlapp.com/publicapi/"/>
-</bean>
-```
-
-Define a bean of type `org.antbear.jprowl.RawProwlClient` and feed it the define `ProwlContext` defined in the previous step:
-
-```xml
-<bean class="org.antbear.jprowl.RawProwlClient">
-	<property name="context" ref="ProwlContext"/>
-</bean>
-```
-
-In your class, add a setter to consume the now configured `ProwlClient`:
+In your class, add a setter to consume the now configured `SimpleProwlClient`:
 
 ```java
-
 @Autowired
 public void setProwlClient(@NotNull final SimpleProwlClient prowlClient) {
 	this.prowlClient = prowlClient;
@@ -63,10 +52,8 @@ public void setProwlClient(@NotNull final SimpleProwlClient prowlClient) {
 Without spring, the wiring of the dependencies must be done manually. But it's trivial:
 
 ```java
-
-DefaultProwlContext context = new DefaultProwlContext();
-RawProwlClient client = new RawProwlClient();
-client.setContext(context);
+final ProwlContext context = new DefaultProwlContext();
+final ProwlClient client = new SimpleProwlClient(new RawProwlClient(context));
 
 // setup ProwlNotification object and post
 final ProwlResponse response = client.postNotification(notification);
