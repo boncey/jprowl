@@ -32,11 +32,14 @@ The variable `prowlClient` is of type `org.antbear.jprowl.SimpleProwlClient`. It
 In your spring context configuration, add:
 
 ```xml
-<bean id="prowlContext" class="org.antbear.jprowl.DefaultProwlContext"/>
-<bean id="rawProwlClient" class="org.antbear.jprowl.RawProwlClient"
-    p:context-ref="prowlContext"/>
-<bean id="prowlClient" class="org.antbear.jprowl.SimpleProwlClient"
-    p:client-ref="rawProwlClient"/>
+    <bean id="rawProwlClient" class="org.antbear.jprowl.RawProwlClient">
+        <property name="context">
+            <bean class="org.antbear.jprowl.DefaultProwlContext"/>
+        </property>
+    </bean>
+    <bean id="prowlClient" class="org.antbear.jprowl.SimpleProwlClient">
+        <constructor-arg ref="rawProwlClient"/>
+    </bean>
 ```
 
 In your class, add a setter to consume the now configured `SimpleProwlClient`:
