@@ -17,22 +17,18 @@ public class RawProwlClient implements ProwlClient {
     private Logger log = LoggerFactory.getLogger(RawProwlClient.class);
 
     @NotNull
-    private ProwlContext context;
-
-    public RawProwlClient() {
-    }
+    private final ProwlContext context;
 
     public RawProwlClient(@NotNull final ProwlContext prowlContext) {
-        this.context = context;
+        if (null == prowlContext) {
+            throw new IllegalArgumentException("ProwlContext may not be null");
+        }
+        this.context = prowlContext;
     }
 
     @NotNull
     public ProwlContext getContext() {
         return context;
-    }
-
-    public void setContext(@NotNull final ProwlContext context) {
-        this.context = context;
     }
 
     @NotNull

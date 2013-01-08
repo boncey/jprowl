@@ -9,10 +9,6 @@ public class SimpleProwlClient implements ProwlClient {
 
     private final ProwlClient client;
 
-    public SimpleProwlClient() {
-        this.client = new RawProwlClient();
-    }
-
     public SimpleProwlClient(final ProwlClient prowlClient) {
         this.client = prowlClient;
     }
