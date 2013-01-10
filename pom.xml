@@ -45,12 +45,18 @@
 
     <distributionManagement>
         <repository>
-            <id>release-repository</id>
-            <url>https://github.com/bwolf/maven-repository/raw/master/releases</url>
+            <id>antbear-maven-release-repo</id>
+            <name>Antbear Maven Repository</name>
+            <uniqueVersion>false</uniqueVersion>
+            <url>scpexe://shogun.antbear.org/maven/releases/</url>
+            <layout>default</layout>
         </repository>
         <snapshotRepository>
-            <id>snapshot-repository</id>
-            <url>https://github.com/bwolf/maven-repository/raw/master/snapshots</url>
+            <id>antbear-maven-snapshot-repo</id>
+            <name>Antbear Maven Snapshot Repository</name>
+            <uniqueVersion>true</uniqueVersion>
+            <url>scpexe://shogun.antbear.org/maven/snapshots/</url>
+            <layout>default</layout>
         </snapshotRepository>
     </distributionManagement>
 
@@ -125,6 +131,15 @@
     </dependencies>
 
     <build>
+        <extensions>
+            <!-- Enabling the use of FTP -->
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ssh-external</artifactId>
+                <version>2.3</version>
+            </extension>
+        </extensions>
+
         <plugins>
             <plugin>
                 <inherited>true</inherited>
