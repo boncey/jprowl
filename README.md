@@ -10,6 +10,28 @@ JProwl is a Java interface for working with [Prowl](http://www.prowlapp.com).
 ## Requirements
 jprowl uses slf4j without specifying a logging backend. You need to choose a backend like {logback, log4j}.
 
+## Maven integration
+The antbear maven repository needs to be specified in `pom.xml`:
+
+```
+<repositories>
+    <repository>
+        <id>antbear-maven-release-repo</id>
+        <url>http://shogun.antbear.org/maven/releases/</url>
+    </repository>
+    <repository>
+        <id>antbear-maven-snapshot-repo</id>
+        <url>http://shogun.antbear.org/maven/snapshots/</url>
+        <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>interval:10</updatePolicy>
+        </snapshots>
+    </repository>
+</repositories>
+```
+
+Available releases are tagged appropriately on github.
+
 ## General
 Depending on the inteded use, either via spring or not, the JProwl package needs to be configured (see below).
 
@@ -27,6 +49,22 @@ final ProwlResponse response = prowlClient.postNotification(notification);
 ```
 
 The variable `prowlClient` is of type `org.antbear.jprowl.SimpleProwlClient`. It can be obtained manually or via Spring DI (see below).
+
+## Without Springframework
+Without spring, the wiring of the dependencies must be done manually. But it's trivial:
+
+```java
+final ProwlContext context = new DefaultProwlContext();
+final ProwlClient client = new SimpleProwlClient(new RawProwlClient(context));
+
+// setup ProwlNotification object and post
+final ProwlResponse response = client.postNotification(notification);
+```
+
+The default prowl context uses the default URL, which can be overriden via constructor arg or setter.
+
+You can either work with the `RawProwlClient` class, or with more comfortable `SimpleProwlClient` class which provides
+default error checking. In the case of errors or failures it throws an `ProwlException`.
 
 ## With Springframework
 In your spring context configuration, add:
@@ -50,21 +88,5 @@ public void setProwlClient(@NotNull final SimpleProwlClient prowlClient) {
 	this.prowlClient = prowlClient;
 }
 ```
-
-## Without Springframework
-Without spring, the wiring of the dependencies must be done manually. But it's trivial:
-
-```java
-final ProwlContext context = new DefaultProwlContext();
-final ProwlClient client = new SimpleProwlClient(new RawProwlClient(context));
-
-// setup ProwlNotification object and post
-final ProwlResponse response = client.postNotification(notification);
-```
-
-The default prowl context uses the default URL, which can be overriden via constructor arg or setter.
-
-You can either work with the `RawProwlClient` class, or with more comfortable `SimpleProwlClient` class which provides
-default error checking. In the case of errors or failures it throws an `ProwlException`.
 
 EOF
