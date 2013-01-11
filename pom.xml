@@ -37,9 +37,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:https://github.com/bwolf/jprowl.git</connection>
-        <url>scm:git:https://github.com/bwolf/jprowl.git</url>
-        <developerConnection>scm:git:https://github.com/bwolf/jprowl.git</developerConnection>
+        <connection>scm:git:git@github.com:bwolf/jprowl.git</connection>
+        <url>scm:git:git@github.com:bwolf/jprowl.git</url>
+        <developerConnection>scm:git:git@github.com:bwolf/jprowl.git</developerConnection>
     </scm>
 
     <distributionManagement>
